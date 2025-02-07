@@ -1,0 +1,4 @@
+{
+    "command": "python3 -m pytest tests/",
+    "working_directory": "/home/kavia/workspace/API-Performance-Optimization-L.0.2/main-component"
+}
