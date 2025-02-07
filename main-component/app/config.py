@@ -39,6 +39,26 @@ class Settings(BaseSettings):
         default=10,
         description="Maximum number of overflow connections allowed"
     )
+    DATABASE_SSL_CA: Optional[str] = Field(
+        default=None,
+        description="Path to SSL CA certificate for database connection"
+    )
+    DATABASE_SSL_VERIFY: bool = Field(
+        default=True,
+        description="Verify SSL certificate for database connection"
+    )
+    DATABASE_USE_IAM: bool = Field(
+        default=False,
+        description="Use IAM authentication for database connection"
+    )
+    DATABASE_REGION: Optional[str] = Field(
+        default=None,
+        description="AWS region for IAM authentication"
+    )
+    DATABASE_SECRET_ARN: Optional[str] = Field(
+        default=None,
+        description="ARN of the AWS Secrets Manager secret containing database credentials"
+    )
     
     # Redis Settings
     REDIS_URL: RedisDsn = Field(

@@ -7,6 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.middleware.rate_limit import RateLimitMiddleware
 from app.routers import api_router
+from app.database import init_db
 
 # Create FastAPI application
 app = FastAPI(
@@ -35,3 +36,8 @@ app.include_router(api_router, prefix="/api/v1")
 async def health_check():
     """Health check endpoint."""
     return {"status": "healthy"}
+
+@app.on_event("startup")
+async def startup_event():
+    """Initialize the database on startup."""
+    init_db()
